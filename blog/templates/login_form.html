@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3 class="mb-4">Zaloguj się</h3>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            <label for="username" class="form-label">Nazwa użytkownika</label>
+            {% if form.username.errors %}
+                {{ form.username(class_="form-control is-invalid", placeholder="Wpisz nazwę użytkownika") }}
+                <div class="invalid-feedback">
+                    {% for error in form.username.errors %}{{ error }}{% endfor %}
+                </div>
+            {% else %}
+                {{ form.username(class_="form-control", placeholder="Wpisz nazwę użytkownika") }}
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Hasło</label>
+            {% if form.password.errors %}
+                {{ form.password(class_="form-control is-invalid", placeholder="Wpisz hasło") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}{{ error }}{% endfor %}
+                </div>
+            {% else %}
+                {{ form.password(class_="form-control", placeholder="Wpisz hasło") }}
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Zaloguj</button>
+    </form>
+{% endblock %}
